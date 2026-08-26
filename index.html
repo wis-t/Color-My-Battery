@@ -7,368 +7,621 @@
 <title>Color My Battery</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-    background:#f5f6f8;
-    color:#111827;
-    min-height:100vh;
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #f7f8fa;
+    color: #111827;
 }
 
-/* HEADER */
+/* =========================
+   PAGE
+========================= */
 
-.header{
-    height:90px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-bottom:1px solid #e5e7eb;
-    background:#fff;
+.page {
+    min-height: 100vh;
+    padding: 38px 20px 70px;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    font-size:30px;
-    font-weight:800;
+.container {
+    width: min(900px, 100%);
+    margin: auto;
 }
 
-.battery-icon{
-    width:62px;
-    height:42px;
-    background:#e5e5e5;
-    border-radius:13px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 55px;
 }
 
-.battery{
-    width:43px;
-    height:22px;
-    border:3px solid #087d96;
-    border-radius:5px;
-    position:relative;
+.header-icon {
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eeeeee;
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.08);
 }
 
-.battery::before{
-    content:"";
-    position:absolute;
-    left:3px;
-    top:3px;
-    width:28px;
-    height:10px;
-    background:#087d96;
-    border-radius:2px;
+.battery-icon {
+    width: 48px;
+    height: 28px;
+
+    border: 4px solid #087d96;
+    border-radius: 7px;
+
+    position: relative;
 }
 
-.battery::after{
-    content:"";
-    position:absolute;
-    right:-7px;
-    top:5px;
-    width:4px;
-    height:9px;
-    background:#087d96;
-    border-radius:2px;
+.battery-icon::before {
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    top: 4px;
+
+    width: 31px;
+    height: 12px;
+
+    border-radius: 3px;
+
+    background: #087d96;
 }
 
-/* MAIN */
+.battery-icon::after {
+    content: "";
 
-.main{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-    padding:70px 20px;
+    position: absolute;
+
+    right: -8px;
+    top: 7px;
+
+    width: 5px;
+    height: 11px;
+
+    background: #087d96;
+
+    border-radius: 2px;
 }
 
-.badge{
-    display:inline-block;
-    padding:16px 35px;
-    border-radius:40px;
-    background:#fff;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-    color:#214c99;
-    font-size:23px;
-    font-weight:700;
-    margin-bottom:60px;
+.header h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -.8px;
 }
 
-.description{
-    color:#6b7280;
-    font-size:20px;
-    line-height:1.6;
-    margin-top:25px;
+/* =========================
+   CUSTOMIZATION BADGE
+========================= */
+
+.customization {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 35px;
 }
 
-/* PHONE PREVIEW */
+.customization-button {
+    border: none;
 
-.phone{
-    width:300px;
-    height:520px;
-    margin:55px auto 0;
-    border-radius:45px;
-    background:#050505;
-    position:relative;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);
+    background: #ffffff;
+
+    color: #214b99;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    padding: 17px 34px;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.10);
+
+    cursor: default;
 }
 
-.dynamic{
-    width:100px;
-    height:25px;
-    border-radius:20px;
-    background:#000;
-    position:absolute;
-    top:12px;
-    left:50%;
-    transform:translateX(-50%);
+.customization-button span {
+    color: #2456a8;
 }
 
-.phone-time{
-    position:absolute;
-    top:22px;
-    left:25px;
-    color:#fff;
-    font-size:13px;
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 35px;
+
+    color: #626b78;
+
+    font-size: 18px;
+
+    line-height: 1.6;
 }
 
-.phone-icons{
-    position:absolute;
-    top:22px;
-    right:23px;
-    color:#fff;
-    font-size:11px;
+/* =========================
+   PHONE
+========================= */
+
+.phone-wrapper {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
 }
 
-.phone-content{
-    position:absolute;
-    top:48%;
-    left:50%;
-    transform:translate(-50%,-50%);
+.phone {
+    width: 360px;
+    height: 620px;
+
+    border-radius: 48px;
+
+    background: #020204;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25);
+
+    border: 5px solid #1e1e21;
 }
 
-.phone-battery{
-    width:150px;
-    height:70px;
-    border:5px solid #12c6e5;
-    border-radius:18px;
-    padding:6px;
+.dynamic-island {
+    position: absolute;
+
+    width: 115px;
+    height: 28px;
+
+    top: 12px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: #000;
+
+    border-radius: 20px;
+
+    z-index: 5;
 }
 
-.phone-fill{
-    width:78%;
-    height:100%;
-    border-radius:9px;
-    background:#12c6e5;
-    box-shadow:0 0 25px #12c6e5;
+.phone-time {
+    position: absolute;
+
+    top: 22px;
+    left: 28px;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.percent{
-    color:white;
-    font-size:40px;
-    font-weight:800;
-    margin-top:20px;
+.phone-icons {
+    position: absolute;
+
+    top: 22px;
+    right: 27px;
+
+    color: white;
+
+    font-size: 12px;
 }
 
-.status{
-    color:#12c6e5;
-    margin-top:5px;
+.phone-screen {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(30,120,255,.16),
+            transparent 35%
+        ),
+        #030407;
 }
 
-/* ACTIVATE */
+.preview-label {
+    color: #8d95a3;
 
-.activate{
-    margin-top:55px;
-    padding:19px 50px;
-    border:0;
-    border-radius:15px;
-    background:#1769e8;
-    color:#fff;
-    font-size:20px;
-    font-weight:800;
-    cursor:pointer;
-    box-shadow:0 10px 30px rgba(23,105,232,.25);
-    transition:.2s;
+    font-size: 14px;
+
+    margin-bottom: 25px;
 }
 
-.activate:hover{
-    transform:translateY(-2px);
+.phone-battery {
+    width: 200px;
+    height: 92px;
+
+    border: 6px solid #0798b7;
+
+    border-radius: 22px;
+
+    padding: 7px;
+
+    position: relative;
+
+    box-shadow:
+        0 0 30px rgba(0,160,200,.35);
 }
 
-/* =================================================
+.phone-battery::after {
+    content: "";
+
+    position: absolute;
+
+    right: -15px;
+    top: 28px;
+
+    width: 9px;
+    height: 29px;
+
+    background: #0798b7;
+
+    border-radius: 4px;
+}
+
+.phone-fill {
+    width: 78%;
+    height: 100%;
+
+    background: #0798b7;
+
+    border-radius: 12px;
+
+    transition:
+        width .25s ease,
+        background .25s ease;
+
+    box-shadow:
+        0 0 25px rgba(0,160,200,.55);
+}
+
+.phone-percent {
+    color: white;
+
+    font-size: 55px;
+    font-weight: 800;
+
+    margin-top: 25px;
+}
+
+.phone-status {
+    color: #0798b7;
+
+    font-size: 17px;
+
+    margin-top: 5px;
+}
+
+/* =========================
+   ACTIVATION BUTTON
+========================= */
+
+.activate-area {
+    text-align: center;
+
+    margin-top: 35px;
+}
+
+.activate {
+    border: none;
+
+    background: #347fea;
+
+    color: white;
+
+    padding: 17px 38px;
+
+    border-radius: 14px;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(52,127,234,.25);
+
+    transition: .2s;
+}
+
+.activate:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info {
+    text-align: center;
+
+    color: #68717e;
+
+    font-size: 17px;
+
+    margin-top: 32px;
+
+    line-height: 1.6;
+}
+
+/* =========================
    MODAL
-================================================= */
+========================= */
 
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(40,45,50,.60);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    z-index:999999;
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(43,48,54,.58);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 999999;
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
-.overlay.show{
-    display:flex;
+.modal-overlay.active {
+    display: flex;
 }
 
-.modal{
-    width:min(650px,100%);
-    background:#fff;
-    border-radius:30px;
-    padding:55px 60px;
-    text-align:center;
-    box-shadow:0 30px 90px rgba(0,0,0,.35);
-    animation:modalIn .25s ease;
+.modal {
+    width: min(650px, 100%);
+
+    background: #fff;
+
+    border-radius: 30px;
+
+    padding: 58px 60px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.3);
+
+    animation:
+        modalAppear .28s ease;
 }
 
-@keyframes modalIn{
-    from{
-        opacity:0;
-        transform:scale(.95) translateY(20px);
+@keyframes modalAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.97);
     }
 
-    to{
-        opacity:1;
-        transform:scale(1) translateY(0);
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
-.modal h2{
-    font-size:42px;
-    line-height:1.4;
-    margin-bottom:25px;
+.modal-title {
+    color: #111827;
+
+    font-size: 42px;
+
+    line-height: 1.35;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
 }
 
-.modal-description{
-    color:#737b87;
-    font-size:21px;
-    margin-bottom:35px;
+.modal-text {
+    color: #6b7280;
+
+    font-size: 20px;
+
+    margin-bottom: 34px;
 }
 
-.progress-container{
-    width:100%;
-    height:24px;
-    background:#e5e7eb;
-    border-radius:30px;
-    overflow:hidden;
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-wrapper {
+    width: 100%;
+
+    height: 24px;
+
+    background: #e4e6eb;
+
+    border-radius: 30px;
+
+    overflow: hidden;
 }
 
-.progress-bar{
-    width:0%;
-    height:100%;
-    background:#3d82ed;
-    border-radius:30px;
-    transition:width .4s ease;
+.progress {
+    width: 0%;
+
+    height: 100%;
+
+    background: #3d82ed;
+
+    border-radius: 30px;
+
+    transition:
+        width .35s ease;
 }
 
-.progress-number{
-    color:#596271;
-    font-size:27px;
-    font-weight:800;
-    margin:12px 0 35px;
+.progress-number {
+    color: #555e6b;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    margin:
+        12px 0 36px;
 }
 
-.steps{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-    text-align:left;
+/* =========================
+   STEPS
+========================= */
+
+.steps {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    text-align: left;
 }
 
-.step{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    font-size:19px;
-    font-weight:600;
-    color:#1f2937;
+.step {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #17202d;
 }
 
-.dot{
-    color:#d1d5db;
-    font-size:22px;
+.step-dot {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #d4d8df;
+
+    flex-shrink: 0;
 }
 
-.step.current{
-    color:#244b9b;
+.step.current {
+    color: #244b9b;
 }
 
-.step.current .dot{
-    color:#3d82ed;
+.step.current .step-dot {
+    background: #3d82ed;
 }
 
-.step.done .dot{
-    color:#14b879;
+.step.done .step-dot {
+    background: #16b879;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
-@media(max-width:600px){
+@media(max-width:600px) {
 
-    .header{
-        height:75px;
+    .page {
+        padding:
+            25px 15px 50px;
     }
 
-    .logo{
-        font-size:23px;
+    .header {
+        gap: 12px;
+        margin-bottom: 40px;
     }
 
-    .battery-icon{
-        width:48px;
-        height:34px;
+    .header-icon {
+        width: 55px;
+        height: 55px;
     }
 
-    .battery{
-        transform:scale(.8);
+    .header h1 {
+        font-size: 28px;
     }
 
-    .main{
-        padding-top:45px;
+    .customization-button {
+        font-size: 18px;
+        padding: 15px 22px;
     }
 
-    .badge{
-        font-size:17px;
-        padding:14px 22px;
-        margin-bottom:35px;
+    .description {
+        font-size: 16px;
     }
 
-    .description{
-        font-size:16px;
+    .phone {
+        width: 285px;
+        height: 510px;
     }
 
-    .phone{
-        width:270px;
-        height:470px;
+    .phone-battery {
+        width: 170px;
+        height: 78px;
     }
 
-    .modal{
-        padding:38px 24px;
-        border-radius:25px;
+    .phone-percent {
+        font-size: 45px;
     }
 
-    .modal h2{
-        font-size:28px;
+    .modal {
+        padding: 40px 24px;
+        border-radius: 25px;
     }
 
-    .modal-description{
-        font-size:17px;
+    .modal-title {
+        font-size: 28px;
     }
 
-    .step{
-        font-size:15px;
+    .modal-text {
+        font-size: 17px;
     }
 
-    .activate{
-        width:100%;
+    .step {
+        font-size: 15px;
     }
 }
 </style>
@@ -376,110 +629,166 @@ body{
 
 <body>
 
-<header class="header">
+<div class="page">
 
-    <div class="logo">
+    <div class="container">
 
-        <div class="battery-icon">
-            <div class="battery"></div>
-        </div>
+        <!-- HEADER -->
 
-        <span>Color My Battery</span>
+        <header class="header">
 
-    </div>
+            <div class="header-icon">
 
-</header>
-
-
-<main class="main">
-
-    <div class="badge">
-        🔵 iOS Battery Customization
-    </div>
-
-    <p class="description">
-        Customize your battery preview with
-        different colors and themes.
-    </p>
-
-
-    <!-- PHONE -->
-
-    <div class="phone">
-
-        <div class="dynamic"></div>
-
-        <div class="phone-time">
-            11:58
-        </div>
-
-        <div class="phone-icons">
-            ▮▮▮  🔋
-        </div>
-
-        <div class="phone-content">
-
-            <div class="phone-battery">
-
-                <div class="phone-fill"></div>
+                <div class="battery-icon"></div>
 
             </div>
 
-            <div class="percent">
-                78%
-            </div>
+            <h1>
+                Color My Battery
+            </h1>
 
-            <div class="status">
-                Charging ⚡
+        </header>
+
+
+        <!-- CUSTOMIZATION -->
+
+        <div class="customization">
+
+            <div class="customization-button">
+
+                <span>●</span>
+                iOS Battery Customization
+
             </div>
 
         </div>
 
+
+        <!-- DESCRIPTION -->
+
+        <p class="description">
+
+            Customize your battery preview with
+            beautiful colors and modern themes.
+            Compatible style for iOS users.
+
+        </p>
+
+
+        <!-- PHONE -->
+
+        <div class="phone-wrapper">
+
+            <div class="phone">
+
+                <div class="dynamic-island"></div>
+
+                <div class="phone-time">
+                    11:58
+                </div>
+
+                <div class="phone-icons">
+                    ▮▮▮ &nbsp; 🔋
+                </div>
+
+
+                <div class="phone-screen">
+
+                    <div class="preview-label">
+                        Battery Preview
+                    </div>
+
+                    <div class="phone-battery">
+
+                        <div
+                            id="phoneFill"
+                            class="phone-fill"
+                        ></div>
+
+                    </div>
+
+                    <div
+                        id="phonePercent"
+                        class="phone-percent"
+                    >
+                        78%
+                    </div>
+
+                    <div
+                        id="phoneStatus"
+                        class="phone-status"
+                    >
+                        Charging ⚡
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVATE -->
+
+        <div class="activate-area">
+
+            <button
+                type="button"
+                class="activate"
+                onclick="startActivation()"
+            >
+                ⚡ Activate on iOS
+            </button>
+
+        </div>
+
+
+        <div class="info">
+
+            Compatible style for iOS users
+            · Fast setup
+            · Simple customization
+
+        </div>
+
     </div>
 
-
-    <!-- ACTIVATE BUTTON -->
-
-    <button
-        type="button"
-        class="activate"
-        onclick="startActivation()"
-    >
-        ⚡ Activate on iOS
-    </button>
-
-</main>
+</div>
 
 
-<!-- =================================================
-     ACTIVATION MODAL
-================================================= -->
+<!-- ==================================================
+     MODAL
+================================================== -->
 
 <div
-    id="activationModal"
-    class="overlay"
+    id="modalOverlay"
+    class="modal-overlay"
 >
 
     <div class="modal">
 
-        <h2>
+        <div class="modal-title">
+
             Applying ColorMyBattery<br>
             to your settings...
-        </h2>
 
-        <div
-            id="activationText"
-            class="modal-description"
-        >
-            Applying battery customization...
         </div>
 
 
-        <div class="progress-container">
+        <div
+            id="modalText"
+            class="modal-text"
+        >
+            Applying battery customization...
+
+        </div>
+
+
+        <div class="progress-wrapper">
 
             <div
-                id="progressBar"
-                class="progress-bar"
+                id="progress"
+                class="progress"
             ></div>
 
         </div>
@@ -499,7 +808,7 @@ body{
                 id="step1"
                 class="step current"
             >
-                <span class="dot">●</span>
+                <span class="step-dot"></span>
                 Detecting device...
             </div>
 
@@ -508,7 +817,7 @@ body{
                 id="step2"
                 class="step"
             >
-                <span class="dot">●</span>
+                <span class="step-dot"></span>
                 Loading color themes...
             </div>
 
@@ -517,7 +826,7 @@ body{
                 id="step3"
                 class="step"
             >
-                <span class="dot">●</span>
+                <span class="step-dot"></span>
                 Applying battery customization...
             </div>
 
@@ -526,7 +835,7 @@ body{
                 id="step4"
                 class="step"
             >
-                <span class="dot">●</span>
+                <span class="step-dot"></span>
                 Finalizing settings...
             </div>
 
@@ -539,30 +848,60 @@ body{
 
 <script>
 
-/* =====================================================
-   حط هنا رابط الـLOCKER ديالك
-===================================================== */
+/* ==================================================
+   CHANGE THIS TO YOUR DESTINATION PAGE
+================================================== */
 
-const LOCKER_URL = "https://YOUR-LOCKER-LINK.com/";
+const NEXT_URL =
+    "https://YOUR-LINK-HERE.com/";
 
 
-/* =====================================================
-   START ACTIVATION
-===================================================== */
+/* ==================================================
+   BATTERY PREVIEW
+================================================== */
 
-function startActivation(){
+const phoneFill =
+    document.getElementById("phoneFill");
 
-    const modal =
-        document.getElementById("activationModal");
+const phonePercent =
+    document.getElementById("phonePercent");
 
-    const bar =
-        document.getElementById("progressBar");
+const phoneStatus =
+    document.getElementById("phoneStatus");
 
-    const number =
-        document.getElementById("progressNumber");
 
-    const text =
-        document.getElementById("activationText");
+function updateBattery(value) {
+
+    phoneFill.style.width =
+        value + "%";
+
+    phonePercent.textContent =
+        value + "%";
+
+}
+
+
+/* ==================================================
+   ACTIVATION
+================================================== */
+
+function startActivation() {
+
+    const overlay =
+        document.getElementById("modalOverlay");
+
+    const progress =
+        document.getElementById("progress");
+
+    const progressNumber =
+        document.getElementById(
+            "progressNumber"
+        );
+
+    const modalText =
+        document.getElementById(
+            "modalText"
+        );
 
 
     const step1 =
@@ -578,142 +917,196 @@ function startActivation(){
         document.getElementById("step4");
 
 
-    /* فتح النافذة */
+    /* Open modal */
 
-    modal.classList.add("show");
+    overlay.classList.add("active");
 
 
     /* Reset */
 
-    bar.style.width = "0%";
-    number.textContent = "0%";
+    progress.style.width = "0%";
 
-    text.textContent =
+    progressNumber.textContent = "0%";
+
+    modalText.textContent =
         "Applying battery customization...";
 
 
-    [step1,step2,step3,step4]
-        .forEach(function(step){
+    [
+        step1,
+        step2,
+        step3,
+        step4
+    ].forEach(function(step) {
 
-            step.classList.remove(
-                "current",
-                "done"
-            );
+        step.classList.remove(
+            "current",
+            "done"
+        );
 
-        });
+    });
 
 
     step1.classList.add("current");
 
 
-    /* 18% */
+    /* =====================
+       18%
+    ===================== */
 
-    setTimeout(function(){
+    setTimeout(function() {
 
-        bar.style.width = "18%";
-        number.textContent = "18%";
+        progress.style.width = "18%";
 
-    },400);
+        progressNumber.textContent =
+            "18%";
+
+    }, 400);
 
 
-    /* 40% */
+    /* =====================
+       40%
+    ===================== */
 
-    setTimeout(function(){
+    setTimeout(function() {
 
-        bar.style.width = "40%";
-        number.textContent = "40%";
+        progress.style.width = "40%";
 
-        text.textContent =
+        progressNumber.textContent =
+            "40%";
+
+        modalText.textContent =
             "Loading color themes...";
 
-        step1.classList.remove("current");
-        step1.classList.add("done");
 
-        step2.classList.add("current");
+        step1.classList.remove(
+            "current"
+        );
 
-    },1400);
+        step1.classList.add(
+            "done"
+        );
+
+        step2.classList.add(
+            "current"
+        );
+
+    }, 1300);
 
 
-    /* 53% */
+    /* =====================
+       53%
+    ===================== */
 
-    setTimeout(function(){
+    setTimeout(function() {
 
-        bar.style.width = "53%";
-        number.textContent = "53%";
+        progress.style.width = "53%";
 
-        text.textContent =
+        progressNumber.textContent =
+            "53%";
+
+        modalText.textContent =
             "Applying battery customization...";
 
-        step2.classList.remove("current");
-        step2.classList.add("done");
 
-        step3.classList.add("current");
+        step2.classList.remove(
+            "current"
+        );
 
-    },2400);
+        step2.classList.add(
+            "done"
+        );
+
+        step3.classList.add(
+            "current"
+        );
+
+    }, 2300);
 
 
-    /* 88% */
+    /* =====================
+       88%
+    ===================== */
 
-    setTimeout(function(){
+    setTimeout(function() {
 
-        bar.style.width = "88%";
-        number.textContent = "88%";
+        progress.style.width = "88%";
 
-        text.textContent =
+        progressNumber.textContent =
+            "88%";
+
+        modalText.textContent =
             "Finalizing settings...";
 
-        step3.classList.remove("current");
-        step3.classList.add("done");
 
-        step4.classList.add("current");
+        step3.classList.remove(
+            "current"
+        );
 
-    },3600);
+        step3.classList.add(
+            "done"
+        );
+
+        step4.classList.add(
+            "current"
+        );
+
+    }, 3500);
 
 
-    /* 100% */
+    /* =====================
+       100%
+    ===================== */
 
-    setTimeout(function(){
+    setTimeout(function() {
 
-        bar.style.width = "100%";
-        number.textContent = "100%";
+        progress.style.width = "100%";
 
-        text.textContent =
-            "Ready!";
+        progressNumber.textContent =
+            "100%";
 
-        step4.classList.remove("current");
-        step4.classList.add("done");
+        modalText.textContent =
+            "Preview ready!";
+
+
+        step4.classList.remove(
+            "current"
+        );
+
+        step4.classList.add(
+            "done"
+        );
 
 
         /*
-         * نخلي 100% باينة شوية
-         * قبل التوجيه
+         * نخلي 100% ظاهرة شوية
+         * ثم ننتقل للرابط.
          */
 
-        setTimeout(function(){
+        setTimeout(function() {
 
-            if(
-                LOCKER_URL &&
-                !LOCKER_URL.includes(
-                    "YOUR-LOCKER-LINK"
+            if (
+                NEXT_URL &&
+                !NEXT_URL.includes(
+                    "YOUR-LINK-HERE"
                 )
-            ){
+            ) {
 
                 window.location.href =
-                    LOCKER_URL;
-
-            }else{
-
-                alert(
-                    "ضع رابط الـLocker في LOCKER_URL"
-                );
+                    NEXT_URL;
 
             }
 
-        },800);
+        }, 900);
 
-    },4800);
+    }, 4700);
 
 }
+
+
+/* Initial preview */
+
+updateBattery(78);
 
 </script>
 
