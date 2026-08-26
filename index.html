@@ -1,41 +1,2023 @@
-<!DOCTYPE html>
+.container{
+  width:min(1000px,92%);<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Battery Color</title>
+<title>Color My Battery</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-  min-height:100vh;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#050505;
-  color:#fff;
-  overflow-x:hidden;
+html {
+    scroll-behavior: smooth;
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  width:500px;
-  height:500px;
-  background:#147cff;
-  filter:blur(180px);
-  opacity:.12;
-  top:-150px;
-  left:-150px;
-  pointer-events:none;
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #03070d;
+    color: #fff;
+
+    overflow-x: hidden;
 }
 
-.container{
-  width:min(1000px,92%);
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   BACKGROUND GLOW
+===================================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    top: 80px;
+    left: -250px;
+
+    background: #00ff88;
+
+    opacity: .07;
+
+    filter: blur(160px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 600px;
+    height: 600px;
+
+    right: -300px;
+    top: 350px;
+
+    background: #7b2cff;
+
+    opacity: .08;
+
+    filter: blur(180px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+.logo-battery {
+    width: 43px;
+    height: 24px;
+
+    border: 3px solid white;
+
+    border-radius: 7px;
+
+    position: relative;
+}
+
+.logo-battery::before {
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    top: 4px;
+
+    width: 27px;
+    height: 10px;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ff55,
+            #00d9ff,
+            #8b35ff
+        );
+}
+
+.logo-battery::after {
+    content: "";
+
+    position: absolute;
+
+    right: -7px;
+    top: 6px;
+
+    width: 4px;
+    height: 9px;
+
+    background: white;
+
+    border-radius: 2px;
+}
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+}
+
+.nav-links a {
+    color: #c9cdd5;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    position: relative;
+
+    padding: 28px 0;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 7px;
+    left: 0;
+    right: 0;
+
+    height: 2px;
+
+    background: #39ff74;
+
+    box-shadow:
+        0 0 10px #39ff74;
+}
+
+.nav-activate {
+    border: 1px solid rgba(255,255,255,.15);
+
+    background: #f7f7f7;
+
+    color: #111;
+
+    border-radius: 11px;
+
+    padding: 12px 20px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.nav-activate:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.2);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 625px;
+
+    display: grid;
+
+    grid-template-columns: 48% 52%;
+
+    align-items: center;
+
+    position: relative;
+
+    padding-top: 40px;
+}
+
+.hero-content {
+    padding-bottom: 50px;
+}
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 17px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.025);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    color: #d8dbe1;
+
+    font-size: 13px;
+
+    margin-bottom: 28px;
+}
+
+.badge-dot {
+    width: 10px;
+    height: 10px;
+
+    background: #9947ff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 12px #9947ff;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 7vw, 82px);
+
+    line-height: .98;
+
+    letter-spacing: -5px;
+
+    max-width: 580px;
+
+    margin-bottom: 27px;
+}
+
+.gradient-text {
+    background:
+        linear-gradient(
+            90deg,
+            #16e95f,
+            #00cfff,
+            #a02cff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+.hero-description {
+    color: #a7abb5;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    max-width: 500px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   MAIN CTA
+===================================================== */
+
+.main-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    min-width: 245px;
+
+    padding: 18px 28px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: #fff;
+
+    color: #0a0a0a;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 35px rgba(255,255,255,.12);
+
+    transition: .25s;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 45px rgba(255,255,255,.2);
+}
+
+.lightning {
+    color: #7b35ff;
+
+    font-size: 23px;
+}
+
+.compatible {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 25px;
+
+    color: #d6d9df;
+
+    font-size: 14px;
+}
+
+.compatible-check {
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #00ef68;
+
+    color: #00ef68;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   IPHONE
+===================================================== */
+
+.phone-area {
+    height: 630px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+.phone-glow {
+    position: absolute;
+
+    width: 330px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            130deg,
+            #741eff,
+            #00cfff,
+            #00ff68
+        );
+
+    opacity: .12;
+
+    filter: blur(70px);
+
+    transform: rotate(-15deg);
+}
+
+.iphone {
+    width: 390px;
+    height: 610px;
+
+    border-radius: 52px;
+
+    border: 5px solid #31343a;
+
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(110,0,255,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            rgba(0,150,255,.3),
+            transparent 40%
+        ),
+        #05070e;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 0 2px #111,
+        0 30px 80px rgba(0,0,0,.7),
+        0 0 80px rgba(77,30,255,.12);
+
+    z-index: 2;
+}
+
+.iphone::before {
+    content: "";
+
+    position: absolute;
+
+    width: 210px;
+    height: 500px;
+
+    right: -100px;
+    top: 120px;
+
+    background:
+        linear-gradient(
+            140deg,
+            transparent,
+            rgba(0,200,255,.5),
+            transparent
+        );
+
+    transform: rotate(-25deg);
+
+    filter: blur(18px);
+}
+
+.dynamic-island {
+    position: absolute;
+
+    width: 120px;
+    height: 29px;
+
+    background: #000;
+
+    border-radius: 30px;
+
+    top: 12px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+.phone-time {
+    position: absolute;
+
+    top: 22px;
+    left: 28px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    z-index: 6;
+}
+
+.phone-icons {
+    position: absolute;
+
+    top: 22px;
+    right: 28px;
+
+    font-size: 12px;
+
+    z-index: 6;
+}
+
+.phone-center {
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%,-42%);
+
+    text-align: center;
+
+    width: 100%;
+}
+
+
+/* =====================================================
+   BATTERY
+===================================================== */
+
+.battery-frame {
+    width: 190px;
+    height: 88px;
+
+    border: 6px solid white;
+
+    border-radius: 22px;
+
+    padding: 7px;
+
+    position: relative;
+
+    margin: auto;
+
+    filter:
+        drop-shadow(
+            0 0 22px var(--battery-color)
+        );
+}
+
+.battery-frame::after {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 28px;
+
+    right: -15px;
+
+    top: 24px;
+
+    background: white;
+
+    border-radius: 4px;
+}
+
+.battery-fill {
+    width: 78%;
+
+    height: 100%;
+
+    background: var(--battery-color);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 28px var(--battery-color);
+
+    transition:
+        width .25s,
+        background .3s,
+        box-shadow .3s;
+}
+
+.phone-percent {
+    font-size: 48px;
+
+    font-weight: 900;
+
+    margin-top: 25px;
+}
+
+.phone-status {
+    margin-top: 5px;
+
+    font-size: 17px;
+
+    color: var(--battery-color);
+
+    transition: color .3s;
+}
+
+
+/* =====================================================
+   COLOR SECTION
+===================================================== */
+
+.custom-panel {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,23,36,.95),
+            rgba(6,11,19,.95)
+        );
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    border-radius: 25px;
+
+    padding: 32px;
+
+    margin-bottom: 18px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.22);
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 27px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #969ba6;
+
+    font-size: 15px;
+}
+
+.colors {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 22px;
+}
+
+.color-option {
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.color-circle {
+    width: 64px;
+    height: 64px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    border: 2px solid transparent;
+
+    transition: .25s;
+
+    box-shadow:
+        0 0 22px var(--c);
+}
+
+.color-option:hover .color-circle {
+    transform: scale(1.08);
+}
+
+.color-option.selected .color-circle {
+    border: 4px solid white;
+
+    box-shadow:
+        0 0 0 4px rgba(255,255,255,.08),
+        0 0 30px var(--c);
+}
+
+.color-name {
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #e4e6ea;
+}
+
+
+/* =====================================================
+   SLIDER
+===================================================== */
+
+.slider-panel {
+    margin-top: 18px;
+
+    margin-bottom: 60px;
+}
+
+.slider-wrapper {
+    padding: 0 10px;
+}
+
+.slider-line {
+    position: relative;
+
+    width: 100%;
+
+    height: 8px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3434,
+            #ffb000,
+            #00dd61,
+            #00c9ff
+        );
+}
+
+.range {
+    position: absolute;
+
+    width: 100%;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    appearance: none;
+
+    background: transparent;
+
+    height: 30px;
+
+    cursor: pointer;
+}
+
+.range::-webkit-slider-thumb {
+    appearance: none;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 3px solid #eee;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.35);
+}
+
+.range::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 3px solid #eee;
+}
+
+.slider-value {
+    text-align: center;
+
+    margin-top: 13px;
+
+    font-weight: 800;
+
+    color: #fff;
+}
+
+.levels {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.level {
+    background: rgba(255,255,255,.025);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 15px;
+
+    padding: 17px;
+
+    text-align: center;
+}
+
+.level strong {
+    display: block;
+
+    font-size: 20px;
+}
+
+.level span {
+    color: #8f949e;
+
+    font-size: 13px;
+
+    margin-top: 4px;
+
+    display: block;
+}
+
+.level:nth-child(1) strong {
+    color: #18e866;
+}
+
+.level:nth-child(2) strong {
+    color: #ffd21e;
+}
+
+.level:nth-child(3) strong {
+    color: #ff8c1a;
+}
+
+.level:nth-child(4) strong {
+    color: #ff3d57;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features-section {
+    margin-bottom: 70px;
+}
+
+.features-title {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.features-title h2 {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.features-title p {
+    color: #8e949f;
+}
+
+.features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.feature-card {
+    padding: 27px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255,255,255,.09);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,22,34,.95),
+            rgba(6,10,17,.95)
+        );
+}
+
+.feature-icon {
+    width: 53px;
+    height: 53px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+
+    font-size: 25px;
+}
+
+.green-icon {
+    background: rgba(0,255,90,.1);
+
+    color: #16ef69;
+}
+
+.purple-icon {
+    background: rgba(135,40,255,.13);
+
+    color: #a34aff;
+}
+
+.blue-icon {
+    background: rgba(20,140,255,.13);
+
+    color: #21a6ff;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+
+    font-size: 17px;
+}
+
+.feature-card p {
+    color: #858b96;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+    border-top: 1px solid rgba(255,255,255,.08);
+
+    padding: 28px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: #8b909a;
+
+    font-size: 13px;
+}
+
+.footer-brand {
+    color: white;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+.footer-social {
+    display: flex;
+
+    gap: 10px;
+}
+
+.social {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding-top: 55px;
+    }
+
+    .hero-content {
+        padding-bottom: 0;
+    }
+
+    .hero h1 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .compatible {
+        justify-content: center;
+    }
+
+    .phone-area {
+        height: 560px;
+        margin-top: 20px;
+    }
+
+    .iphone {
+        width: 320px;
+        height: 530px;
+    }
+
+    .colors {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .levels {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .footer {
+        flex-direction: column;
+
+        gap: 20px;
+
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .navbar {
+        height: 68px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .nav-activate {
+        padding: 10px 13px;
+
+        font-size: 12px;
+    }
+
+    .hero {
+        padding-top: 42px;
+    }
+
+    .hero h1 {
+        font-size: 51px;
+
+        letter-spacing: -3px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .main-button {
+        width: 100%;
+    }
+
+    .phone-area {
+        height: 520px;
+    }
+
+    .iphone {
+        width: 285px;
+        height: 500px;
+
+        border-radius: 42px;
+    }
+
+    .battery-frame {
+        width: 155px;
+        height: 72px;
+    }
+
+    .phone-percent {
+        font-size: 40px;
+    }
+
+    .custom-panel {
+        padding: 23px 17px;
+
+        border-radius: 20px;
+    }
+
+    .section-title h2 {
+        font-size: 24px;
+    }
+
+    .color-circle {
+        width: 53px;
+        height: 53px;
+    }
+
+    .colors {
+        gap: 18px 5px;
+    }
+
+    .color-name {
+        font-size: 12px;
+    }
+
+    .feature-card {
+        padding: 22px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-battery"></div>
+
+        <span>
+            Color My Battery
+        </span>
+
+    </div>
+
+
+    <nav class="nav-links">
+
+        <a href="#home" class="active">
+            Home
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#themes">
+            Themes
+        </a>
+
+        <a href="#faq">
+            FAQ
+        </a>
+
+    </nav>
+
+
+    <button
+        class="nav-activate"
+        onclick="continueToLink()"
+    >
+        Activate on iOS ⚡
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+
+    <div class="hero-content">
+
+
+        <div class="badge">
+
+            <span class="badge-dot"></span>
+
+            iOS BATTERY CUSTOMIZATION
+
+        </div>
+
+
+        <h1>
+
+            Personalize
+
+            your
+
+            <span class="gradient-text">
+                battery.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Choose custom colors for your battery levels
+            and create a clean, modern style that matches
+            your favorite theme.
+
+        </p>
+
+
+        <a
+            href="#customizer"
+            class="main-button"
+        >
+
+            <span class="lightning">
+                ⚡
+            </span>
+
+            Activate on iOS
+
+        </a>
+
+
+        <div class="compatible">
+
+            <span class="compatible-check">
+                ✓
+            </span>
+
+            Compatible with iOS 14.0 and above
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PHONE -->
+
+    <div class="phone-area">
+
+        <div class="phone-glow"></div>
+
+
+        <div
+            class="iphone"
+            id="iphone"
+            style="--battery-color:#16e866;"
+        >
+
+
+            <div class="dynamic-island"></div>
+
+
+            <div class="phone-time">
+                9:41
+            </div>
+
+
+            <div class="phone-icons">
+                ●●●  WiFi  🔋
+            </div>
+
+
+            <div class="phone-center">
+
+
+                <div class="battery-frame">
+
+                    <div
+                        class="battery-fill"
+                        id="batteryFill"
+                    ></div>
+
+                </div>
+
+
+                <div
+                    class="phone-percent"
+                    id="phonePercent"
+                >
+                    78%
+                </div>
+
+
+                <div
+                    class="phone-status"
+                    id="phoneStatus"
+                >
+                    Charging ⚡
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COLORS
+===================================================== -->
+
+<section
+    class="custom-panel"
+    id="themes"
+>
+
+
+    <div class="section-title">
+
+        <h2>
+            Choose a color
+        </h2>
+
+        <p>
+            Pick a color and preview it instantly.
+        </p>
+
+    </div>
+
+
+    <div class="colors">
+
+
+        <div
+            class="color-option selected"
+            data-color="#16e866"
+        >
+
+            <div
+                class="color-circle"
+                style="
+                    --c:#16e866;
+                    background:#16e866;
+                "
+            ></div>
+
+            <div class="color-name">
+                Green
+            </div>
+
+        </div>
+
+
+        <div
+            class="color-option"
+            data-color="#ffd21e"
+        >
+
+            <div
+                class="color-circle"
+                style="
+                    --c:#ffd21e;
+                    background:#ffd21e;
+                "
+            ></div>
+
+            <div class="color-name">
+                Yellow
+            </div>
+
+        </div>
+
+
+        <div
+            class="color-option"
+            data-color="#ff8c1a"
+        >
+
+            <div
+                class="color-circle"
+                style="
+                    --c:#ff8c1a;
+                    background:#ff8c1a;
+                "
+            ></div>
+
+            <div class="color-name">
+                Orange
+            </div>
+
+        </div>
+
+
+        <div
+            class="color-option"
+            data-color="#ff3d57"
+        >
+
+            <div
+                class="color-circle"
+                style="
+                    --c:#ff3d57;
+                    background:#ff3d57;
+                "
+            ></div>
+
+            <div class="color-name">
+                Red
+            </div>
+
+        </div>
+
+
+        <div
+            class="color-option"
+            data-color="#229fff"
+        >
+
+            <div
+                class="color-circle"
+                style="
+                    --c:#229fff;
+                    background:#229fff;
+                "
+            ></div>
+
+            <div class="color-name">
+                Blue
+            </div>
+
+        </div>
+
+
+        <div
+            class="color-option"
+            data-color="#8d3cff"
+        >
+
+            <div
+                class="color-circle"
+                style="
+                    --c:#8d3cff;
+                    background:#8d3cff;
+                "
+            ></div>
+
+            <div class="color-name">
+                Purple
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SLIDER
+===================================================== -->
+
+<section
+    class="custom-panel slider-panel"
+    id="customizer"
+>
+
+
+    <div class="section-title">
+
+        <h2>
+            Adjust battery level
+        </h2>
+
+        <p>
+            Move the slider to see how it looks at different levels.
+        </p>
+
+    </div>
+
+
+    <div class="slider-wrapper">
+
+
+        <div class="slider-line">
+
+            <input
+                type="range"
+                class="range"
+                id="batteryRange"
+                min="1"
+                max="100"
+                value="78"
+            >
+
+        </div>
+
+
+        <div
+            class="slider-value"
+            id="sliderValue"
+        >
+            78%
+        </div>
+
+
+    </div>
+
+
+    <div class="levels">
+
+
+        <div class="level">
+
+            <strong>
+                100%
+            </strong>
+
+            <span>
+                Full
+            </span>
+
+        </div>
+
+
+        <div class="level">
+
+            <strong>
+                50%
+            </strong>
+
+            <span>
+                Medium
+            </span>
+
+        </div>
+
+
+        <div class="level">
+
+            <strong>
+                20%
+            </strong>
+
+            <span>
+                Low
+            </span>
+
+        </div>
+
+
+        <div class="level">
+
+            <strong>
+                5%
+            </strong>
+
+            <span>
+                Critical
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+    class="features-section"
+    id="features"
+>
+
+
+    <div class="features-title">
+
+        <h2>
+            Made for your style
+        </h2>
+
+        <p>
+            Simple customization without unnecessary complexity.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon green-icon">
+                🔋
+            </div>
+
+            <h3>
+                Battery Level Colors
+            </h3>
+
+            <p>
+                Choose different colors for different
+                battery percentage ranges.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon purple-icon">
+                🎨
+            </div>
+
+            <h3>
+                Theme Matching
+            </h3>
+
+            <p>
+                Match your battery preview with your
+                wallpaper, widgets and personal style.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon blue-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Quick Activation
+            </h3>
+
+            <p>
+                A simple and fast activation experience
+                designed for iOS devices.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+    <div>
+
+        <div class="footer-brand">
+            🔋 Color My Battery
+        </div>
+
+        <div>
+            Make your iOS experience more colorful.
+        </div>
+
+    </div>
+
+
+    <div>
+
+        © 2026 Color My Battery
+
+        <br>
+
+        Independent project. Not affiliated with Apple Inc.
+
+    </div>
+
+
+    <div class="footer-social">
+
+        <a
+            href="#"
+            class="social"
+        >
+            ♪
+        </a>
+
+        <a
+            href="#"
+            class="social"
+        >
+            ●
+        </a>
+
+        <a
+            href="#"
+            class="social"
+        >
+            ◎
+        </a>
+
+    </div>
+
+
+</footer>
+
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   SMART LINK
+===================================================== */
+
+/*
+  حط هنا الرابط المشروع ديالك.
+
+  مثال:
+  const SMART_LINK =
+      "https://example.com/";
+*/
+
+const SMART_LINK =
+    "https://YOUR-SMART-LINK.com/";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const iphone =
+    document.getElementById("iphone");
+
+const batteryFill =
+    document.getElementById("batteryFill");
+
+const phonePercent =
+    document.getElementById("phonePercent");
+
+const phoneStatus =
+    document.getElementById("phoneStatus");
+
+const batteryRange =
+    document.getElementById("batteryRange");
+
+const sliderValue =
+    document.getElementById("sliderValue");
+
+const colorOptions =
+    document.querySelectorAll(".color-option");
+
+
+/* =====================================================
+   BATTERY LEVEL
+===================================================== */
+
+function updateBattery(value) {
+
+    value = Number(value);
+
+    phonePercent.textContent =
+        value + "%";
+
+    sliderValue.textContent =
+        value + "%";
+
+    batteryFill.style.width =
+        value + "%";
+
+
+    if (value <= 5) {
+
+        phoneStatus.textContent =
+            "Critical";
+
+    }
+
+    else if (value <= 20) {
+
+        phoneStatus.textContent =
+            "Low";
+
+    }
+
+    else if (value <= 50) {
+
+        phoneStatus.textContent =
+            "Medium";
+
+    }
+
+    else {
+
+        phoneStatus.textContent =
+            "Charging ⚡";
+
+    }
+
+}
+
+
+/* =====================================================
+   SLIDER
+===================================================== */
+
+batteryRange.addEventListener(
+    "input",
+    function () {
+
+        updateBattery(
+            this.value
+        );
+
+    }
+);
+
+
+/* =====================================================
+   COLORS
+===================================================== */
+
+colorOptions.forEach(
+    function (option) {
+
+        option.addEventListener(
+            "click",
+            function () {
+
+
+                colorOptions.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "selected"
+                        );
+
+                    }
+                );
+
+
+                this.classList.add(
+                    "selected"
+                );
+
+
+                const color =
+                    this.dataset.color;
+
+
+                iphone.style.setProperty(
+                    "--battery-color",
+                    color
+                );
+
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+function continueToLink() {
+
+    /*
+      توجيه عادي للرابط المحدد.
+    */
+
+    if (
+        SMART_LINK &&
+        !SMART_LINK.includes(
+            "YOUR-SMART-LINK"
+        )
+    ) {
+
+        window.location.href =
+            SMART_LINK;
+
+    }
+
+    else {
+
+        document
+            .getElementById("customizer")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL
+===================================================== */
+
+updateBattery(78);
+
+</script>
+
+
+</body>
+</html>
   margin:auto;
 }
 
